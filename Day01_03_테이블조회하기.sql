@@ -145,9 +145,11 @@ ORDER BY ENAME ASC;
 -- 9> 10번 및 30번 부서에 속하는 모든 사원 중 급여가 1500을 넘는 사원의
 -- 이름 및 급여를 출력하라.
 -- (단 컬럼명을 각각 employee 및 Monthly Salary로 지정하시오)
+/*
 SELECT ENAME AS 'EMPLOYEE', SAL AS 'MONTHLONTHLY SALARY'
 FROM EMP 
 WHERE DEPTNO IN(10, 30)
   AND SAL <= 1500;
+*/
 
 
