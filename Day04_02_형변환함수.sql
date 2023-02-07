@@ -27,8 +27,8 @@ SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME
       , TO_CHAR(100, '9999999')       -- '      100'
       , TO_CHAR(100, '000000')        -- '00100'
       , TO_CHAR(1234, '9,999')        -- '1,234'
-      , TO_CHAR(12345, '9,999')       -- ##### (5자리 123445를 4자리 형식 9,90
-      , TO_CHAR(12345, '99.999')      -- '12,345'
+      , TO_CHAR(12345, '9,999')       -- ##### (5자리 123445를 4자리 형식 9,999에 맞출 수 없다.)
+      , TO_CHAR(12345, '99,999')      -- '12,345'
       , TO_CHAR(0.123, '0.00')        -- '0.12' (반올림) 
       , TO_CHAR(0.125, '0.00')        -- '0.13' (반올림)
   FROM
@@ -41,7 +41,7 @@ SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME
  -- 먼저, 현재 날짜와 시간 확인하기
  SELECT
         SYSDATE                 -- DATE 타입의 현재 날짜와 시간
-        , SYSTIMESTAMP          -- TIMESTAMP 타입의 현재 날짜와 시간
+      , SYSTIMESTAMP          -- TIMESTAMP 타입의 현재 날짜와 시간
     FROM
         DUAL;
         
