@@ -1,64 +1,64 @@
 -- 기본키 제거하기
-alter table nation_tbl
-    drop primary key;           -- 테이블의 기본키는 오직 1개이므로 제약조건의 이름을 몰라도 삭제할 수 있다.
-alter table event_tbl
-    drop primary key;
-alter table plaryer_tbl
-    drop primary key;
-alter table schedule_tbl
-    drop primary key;
+ALTER TABLE NATION_TBL
+    DROP PRIMARY KEY;           -- 테이블의 기본키는 오직 1개이므로 제약조건의 이름을 몰라도 삭제할 수 있다.
+ALTER TABLE EVENT_TBL
+    DROP PRIMARY KEY;
+ALTER TABLE PLARYER_TBL
+    DROP PRIMARY KEY;
+ALTER TABLE SCHEDULE_TBL
+    DROP PRIMARY KEY;
 
 -- 기본키 추가하기
-alter table nation_tbl
-    add constraint pk_nation primary key(n_code);
-alter table event_tbl
-    add constraint pk_event primary key(e_code);
-alter table player_tbl
-    add constraint pk_player primary key(p_code);
-alter table schedule_tbl
-    add constraint pk_schedule primary key(s_no);
+ALTER TABLE NATION_TBL
+    ADD CONSTRAINT PK_NATION PRIMARY KEY(N_CODE);
+ALTER TABLE EVENT_TBL
+    ADD CONSTRAINT PK_EVENT PRIMARY KEY(E_CODE);
+ALTER TABLE PLAYER_TBL
+    ADD CONSTRAINT PK_PLAYER PRIMARY KEY(P_CODE);
+ALTER TABLE SCHEDULE_TBL
+    ADD CONSTRAINT PK_SCHEDULE PRIMARY KEY(S_NO);
         
 -- 외래키 제거하기
-alter table player_tbl
-    drop constraint fk_player_nation;
-alter table player_tbl
-    drop constraint fk_player_event;
-alter table schedule_tbl
-    drop constraint fk_schedule_nation;
-alter table schedule_tbl
-    drop constraint fk_schedule_event;
+ALTER TABLE PLAYER_TBL
+    DROP CONSTRAINT FK_PLAYER_NATION;
+ALTER TABLE PLAYER_TBL
+    DROP CONSTRAINT FK_PLAYER_EVENT;
+ALTER TABLE SCHEDULE_TBL
+    DROP CONSTRAINT FK_SCHEDULE_NATION;
+ALTER TABLE SCHEDULE_TBL
+    DROP CONSTRAINT FK_SCHEDULE_EVENT;
     
 -- 외래키 추가하기
-alter table player_tbl
-    add constraint fk_player_nation foreign key(n_code)
-        references nation_tbl(n_code)
-            on delete cascade;
-alter table player_tbl
-    add constraint fk_player_event foreign key(e_code)
-        references event_tbl(e_code)
-            on delete cascade;
-alter table schedule_tbl
-    add constraint fk_schedule_nation foreign key(n_code)
-        references nation_tbl(n_code)
-            on delete set null;     -- on delete cascade도 가능하다.
-alter table schedule_tbl
-    add constraint fk_schedule_event foreign key(e_code)
-        references event_tbl(e_cdoe)
-            on delete set null;     -- on delete cascade도 가능하다.
+ALTER TABLE PLAYER_TBL
+    ADD CONSTRAINT FK_PLAYER_NATION FOREIGN KEY(N_CODE)
+        REFERENCES NATION_TBL(N_CODE)
+            ON DELETE CASCADE;
+ALTER TABLE PLAYER_TBL
+    ADD CONSTRAINT FK_PLAYER_EVENT FOREIGN KEY(E_CODE)
+        REFERENCES EVENT_TBL(E_CODE)
+            ON DELETE CASCADE;
+ALTER TABLE SCHEDULE_TBL
+    ADD CONSTRAINT FK_SCHEDULE_NATION FOREIGN KEY(N_CODE)
+        REFERENCES NATION_TBL(N_CODE)
+            ON DELETE SET NULL;     -- on delete cascade도 가능하다.
+ALTER TABLE SCHEDULE_TBL
+    ADD CONSTRAINT FK_SCHEDULE_EVENT FOREIGN KEY(E_CODE)
+        REFERENCES EVENT_TBL(E_CDOE)
+            ON DELETE SET NULL;     -- on delete cascade도 가능하다.
             
 -- 연습. nation_tbl의 기본키 제거하기
 -- 외래키(FK)에 의해서 참조 중인 기본키(PK)는 "반드시" 외래키를 먼저 삭제해야 한다.
-alter table player_tbl
-    drop constraint fk_player_nation;
-alter table schedule_tbl
-    drop constraint fk_schedule_nation;
-alter table nation_tbl
-    drop primary key;          
+ALTER TABLE PLAYER_TBL
+    DROP CONSTRAINT FK_PLAYER_NATION;
+ALTER TABLE SCHEDULE_TBL
+    DROP CONSTRAINT FK_SCHEDULE_NATION;
+ALTER TABLE NATION_TBL
+    DROP PRIMARY KEY;          
 
 -- 외래키 제약 조건 일시 중지(비활성화)
-alter table player_tbl
-    disable constraint fk_player_event;
+ALTER TABLE PLAYER_TBL
+    DISABLE CONSTRAINT FK_PLAYER_EVENT;
     
 -- 외래키 제약 조건 다시 시작(활성화)
-alter table player_tbl
-    enable constraint fk_player_event;
+ALTER TABLE PLAYER_TBL
+    ENABLE CONSTRAINT FK_PLAYER_EVENT;
