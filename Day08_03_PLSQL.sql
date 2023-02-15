@@ -153,7 +153,7 @@ BEGIN
 END;
     
 
--- EMPLOYEE_ID가 150인 사원의 SALARY가 1500 이상이면 '고액연봉', 아니면 '보통연봉'을 출력하시오.
+-- EMPLOYEE_ID가 150인 사원의 SALARY가 15000 이상이면 '고액연봉', 아니면 '보통연봉'을 출력하시오.
 DECLARE
     EMP_ID EMPLOYEES.EMPLOYEE_ID%TYPE;
     SAL EMPLOYEES.SALARY%TYPE;
