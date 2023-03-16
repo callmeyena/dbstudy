@@ -74,7 +74,7 @@ DROP TRIGGER TRIG2;
 
 /*
     OLD 테이블
-    1. INSERT, UPDATE, DELETE 수행 이전의 정보를 임시 저장하고 있는 테이블이
+    1. DML(INSERT, UPDATE, DELETE) 작업 후 자동으로 실행되는 데이터베이스 객체이다.
     2. :OLD 방식으로 호출한다.
     3. AFTER 트리거와 함께 사용한다.
         1) AFTER INSERT : NULL
